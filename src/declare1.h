@@ -13,10 +13,10 @@ c    Declarations for Main file
      1       rjb_bar_s(MAX_FLT,MAX_PROB,MAX_INTEN), rx_bar_s(MAX_FLT,MAX_PROB,MAX_INTEN),
      2       e_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN), rSeismo_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN),
      3       ry0_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN), mag_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN),
-     4       ftype_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN), hypodepth_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN)
-      real*8 dipavgd_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN), ztor_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN),
-     1       thetasite_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN), rupwidth_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN),
-     2       rHypo_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN)
+     4       ftype_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN), hypodepth_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN),
+     5       dipavgd_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN), ztor_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN),
+     6       thetasite_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN), rupwidth_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN),
+     7       rHypo_bar_s(MAX_FLT, MAX_PROB,MAX_INTEN)
 
       integer faultFlag(MAX_FLT,100,MAX_FLT), nDD(MAX_FLT), nfltGrid(2),
      1        segModelFlag(MAX_FLT,100), nSegModel(MAX_FLT),

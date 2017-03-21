@@ -125,8 +125,8 @@ c      Initialize Haz Arrays to zero
        call S23_InitHazBinsX ( HazBinsX )
 
 c      Initialize Mean Deagg values for this site
-       call S23_InitDeagg ( m_bar, d_bar, e_bar, Xcost_bar )
-       call S23_InitDeagg2 ( m_bar_s, rrup_bar_s, rjb_bar_s, rx_bar_s, e_bar_s,
+       call InitDeagg ( m_bar, d_bar, e_bar, Xcost_bar )
+       call InitDeagg2 ( m_bar_s, rrup_bar_s, rjb_bar_s, rx_bar_s, e_bar_s,
      1                   rSeismo_bar_s, ry0_bar_s, mag_bar_s, ftype_bar_s,
      2                   hypodepth_bar_s, dipavgd_bar_s, ztor_bar_s,
      3                   thetasite_bar_s, rupwidth_bar_s, rHypo_bar_s )
@@ -601,6 +601,16 @@ c                    Add to source deagg
                      dipavgd_bar_s(iFlt,iProb,jInten) = dipavgd_bar_s(iFlt,iProb,jInten) + mHaz*wt1*dipavgd
                      ftype_bar_s(iFlt,iProb,jInten) = ftype_bar_s(iFlt,iProb,jInten) + mHaz*wt1*ftype(iFlt,iFtype)
 
+                     rSeismo_bar_s(iFlt,iProb,jInten) = rSeismo_bar_s(iFlt,iProb,jInten) + mHaz*wt1*distseismo
+                     ry0_bar_s(iFlt,iProb,jInten) = ry0_bar_s(iFlt,iProb,jInten) + mHaz*wt1*ry0
+                     rHypo_bar_s(iFlt,iProb,jInten) = rHypo_bar_s(iFlt,iProb,jInten) + mHaz*wt1*disthypo
+                     hypodepth_bar_s(iFlt,iProb,jInten) = hypodepth_bar_s(iFlt,iProb,jInten) + mHaz*wt1*hypodepth
+                     Ztor_bar_s(iFlt,iProb,jInten) = Ztor_bar_s(iFlt,iProb,jInten) + mHaz*wt1*Ztor
+                     thetasite_bar_s(iFlt,iProb,jInten) = thetasite_bar_s(iFlt,iProb,jInten) + mHaz*wt1*theta_site
+                     rupwidth_bar_s(iFlt,iProb,jInten) = rupwidth_bar_s(iFlt,iProb,jInten) + mHaz*wt1*rupwidth
+                     dipavgd_bar_s(iFlt,iProb,jInten) = dipavgd_bar_s(iFlt,iProb,jInten) + mHaz*wt1*dipavgd
+                     ftype_bar_s(iFlt,iProb,jInten) = ftype_bar_s(iFlt,iProb,jInten) + mHaz*wt1*ftype(iFlt,iFtype)
+
 c                    Save Marginal Hazard to temp array for fractile output
 c                    This is for the total hazard fractiles
                      tempHaz(iParam,jInten,iProb,iAtten,iFtype) = mHaz
@@ -709,16 +719,13 @@ c      Write out the deagrregated hazard
      2       distBins, epsBins, m_bar, d_bar, e_bar, Xcost_bar,
      3       nXcostBins, XcostBins, HazBinsX )
 
-       call S21_output_Sourcedeagg ( isite, sitex, sitey, testInten, nInten,
+       call output_sourcedeagg ( isite, sitex, sitey, testInten, nInten,
      1           nFlt, haz, fName, m_bar_s, rrup_bar_s, rjb_bar_s,
      2           rx_bar_s, e_bar_s, rSeismo_bar_s, ry0_bar_s, mag_bar_s,
      3           ftype_bar_s, hypodepth_bar_s, dipavgd_bar_s, ztor_bar_s,
      4           thetasite_bar_s, rupwidth_bar_s, rHypo_bar_s, specT, nProb)
 
-       call S21_WriteTempHaz2 ( tempHaz2, nInten, nProb, nAtten, nattenType )
-
-       close (27) !out5
-       close (28) !out6
+       call WriteTempHaz2 ( tempHaz2, nInten, nProb, nAtten, nattenType )
 
  1000 continue
 

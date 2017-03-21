@@ -886,7 +886,7 @@ c  -------------------------------------------------------------------
       end
 c  -------------------------------------------------------------------
 
-      subroutine S21_output_Sourcedeagg ( isite, sitex, sitey, testInten, nInten,
+      subroutine output_Sourcedeagg ( isite, sitex, sitey, testInten, nInten,
      1           nFlt, haz, fName, m_bar_s, rrup_bar_s, rjb_bar_s,
      2           rx_bar_s, e_bar_s, rSeismo_bar_s, ry0_bar_s, mag_bar_s,
      3           ftype_bar_s, hypodepth_bar_s, dipavgd_bar_s, ztor_bar_s,
@@ -948,8 +948,6 @@ c        Write MBar, RrupBar, Rjbbar, Rxbar and EpsBar Results
      1          (rupwidth_bar_s(iFlt,iProb,iInten)/haz(iInten,iProb,iFlt),iInten=1,nInten(iProb))
           write (nwr,'( 2x,a30,''HypoDepthBar '',1f7.2,29f10.2)') fName(iFlt),
      1          (hypodepth_bar_s(iFlt,iProb,iInten)/haz(iInten,iProb,iFlt),iInten=1,nInten(iProb))
-
-
          enddo
         write (nwr,'( /,''------------------'',/)')
         enddo
